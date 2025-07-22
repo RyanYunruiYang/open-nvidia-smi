@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "open-nvidia-smi"
+version = "0.1.0"
+description = "Open source replica of nvidia-smi using NVML"
+requires-python = ">=3.7"
+dependencies = [
+    "nvidia-ml-py",
+    "psutil",
+]
+
+[project.scripts]
+nvsmi = "nvsmi.cli.main:main"
+
+[tool.setuptools]
+packages = ["nvsmi"]

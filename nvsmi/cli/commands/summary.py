@@ -26,7 +26,7 @@ def run_summary(args):
         for idx in range(count):
             h = nvml.get_device_handle_by_index(idx)
             name = nvml.get_device_name(h)
-            bus_id = nvml.get_device_pci_info(h).busId.decode()
+            bus_id = nvml.get_device_pci_info(h).busId
             mem = nvml.get_device_memory_info(h)                   # has .used, .total in bytes
             util = nvml.get_device_utilization_rates(h)            # has .gpu (%)
             temp = nvml.get_device_temperature(h, nvml.NVML_TEMPERATURE_GPU)                  # GPU temp in °C

@@ -17,12 +17,12 @@ def shutdown():
 
 def get_driver_version():
     """Get driver version string. Example: 550.90.07"""
-    return pynvml.nvmlSystemGetDriverVersion().decode()
+    return pynvml.nvmlSystemGetDriverVersion()
 
 
 def get_nvml_version():
     """Get NVML version string"""
-    return pynvml.nvmlSystemGetNVMLVersion().decode()
+    return pynvml.nvmlSystemGetNVMLVersion()
 
 
 def get_device_count():
@@ -37,12 +37,12 @@ def get_device_handle_by_index(index):
 
 def get_device_name(handle):
     """Get device name string"""
-    return pynvml.nvmlDeviceGetName(handle).decode()
+    return pynvml.nvmlDeviceGetName(handle)
 
 
 def get_device_uuid(handle):
     """Get device UUID string"""
-    return pynvml.nvmlDeviceGetUUID(handle).decode()
+    return pynvml.nvmlDeviceGetUUID(handle)
 
 
 def get_device_memory_info(handle):
