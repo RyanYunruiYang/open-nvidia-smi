@@ -1,4 +1,5 @@
 import argparse
+import sys
 from nvsmi.cli.commands import summary, nvlink
 
 def main():
@@ -13,12 +14,16 @@ def main():
     # parser.add_argument("-d", "--display", help="selective fields",
     #                     choices=[...])
 
-    subs = p.add_subparsers(dest="cmd", required=True)
+    subs = p.add_subparsers(dest="cmd", required=False)
     summary.attach_parser(subs)
     nvlink.attach_parser(subs)
     # TODO: add other subcommands
     # - topo, c2c, drain, clocks, vgpu, mig, boost-slider
     # - power-hint, conf-compute, power-smoothing, power-profiles, encodersessions
+
+    # Default to summary
+    if len(sys.argv) == 1 or sys.argv[1][0] == '-' and sys.argv[1] != '-q':
+        sys.argv.insert(1, "summary")
 
     args = p.parse_args()
     args.func(args)
